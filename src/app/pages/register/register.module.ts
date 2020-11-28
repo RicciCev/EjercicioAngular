@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
 
 @NgModule({
-    declarations: [],
+    declarations: [ RegisterComponent ],
     imports: [ CommonModule, FormsModule ],
     exports: [RegisterComponent],   // exportamos el componente registro para acceder desde el resto de ficheros.
     providers: [],
