@@ -1,3 +1,4 @@
+import { RegisterForm } from './../../models/registerForm';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./register.component.css']     // fichero css del componente.
 })
 export class RegisterComponent implements OnInit {
-    constructor() { }
+    public registerModel: RegisterForm;
+
+    constructor() { 
+        this.registerModel = new RegisterForm();
+    }
 
     ngOnInit(): void { }
 }
