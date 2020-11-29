@@ -3,6 +3,7 @@ export class RegisterForm {
     public surname: string;
     public email: string;
     public passw: string;
+    public validatePassw: string;
     public phoneNum: number;
     public address: string;
     public secondAddress: string;

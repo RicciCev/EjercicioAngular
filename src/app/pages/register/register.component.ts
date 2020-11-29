@@ -29,5 +29,11 @@ export class RegisterComponent implements OnInit {
             this.ok = true;
         }
 
+        if(this.registerModel.passw !== this.registerModel.validatePassw) {
+            this.ok = false;
+        } else {
+            this.ok = true;
+        }
+
     }
 }
