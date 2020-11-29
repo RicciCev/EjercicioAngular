@@ -1,56 +1,59 @@
 <div class="container mt-3">
-  <form>
+  <form #registerForm="ngForm">
     <div class="form-row">
       <!-- Nombre y Apellidos -->
       <div class="form-group col-md-6">
         <label for="name">Nombre</label>
-        <input type="text" class="form-control" id="name" required>
+        <input type="text" class="form-control" name="name" [(ngModel)]="registerModel.name" id="name" required>
       </div>
       <div class="form-group col-md-6">
         <label for="name">Apellidos</label>
-        <input type="text" class="form-control" id="surname" required>
+        <input type="text" class="form-control" name="surname" [(ngModel)]="registerModel.surname" id="surname" required>
       </div>
 
       <!-- Correo y telefono -->
       <div class="form-group col-md-6">
         <label for="email">Email</label>
-        <input type="email" class="form-control" id="email">
+        <input type="email" class="form-control" name="email" [(ngModel)]="registerModel.email" id="email" required>
       </div>
       <div class="form-group col-md-6">
         <label for="phoneNum">Telefono</label>
-        <input type="number" class="form-control" id="phone">
+        <input type="number" class="form-control" name="phoneNum" [(ngModel)]="registerModel.phoneNum" id="phoneNum" required>
       </div>
 
       <!-- Password y repetir password -->
       <div class="form-group col-md-6">
         <label for="passw">Password</label>
-        <input type="password" class="form-control" id="passw">
+        <input type="password" class="form-control" name="passw" [(ngModel)]="registerModel.passw" id="passw" required>
+      </div>
+      <div *ngIf="!this.ok">
+        {{errorMsg}}
       </div>
       <div class="form-group col-md-6">
         <label for="repeatPassw">Repeat Password</label>
-        <input type="password" class="form-control" id="repeat-passw">
+        <input type="password" class="form-control" id="repeat-passw" required>
       </div>
     </div>
 
     <!-- Direccion 1 y 2 -->
     <div class="form-group">
       <label for="address">Direccion</label>
-      <input type="text" class="form-control" id="address" placeholder="1234 Main St">
+      <input type="text" class="form-control" name="address" [(ngModel)]="registerModel.address" id="address" placeholder="1234 Main St">
     </div>
     <div class="form-group">
       <label for="secondAddress">Direccion 2</label>
-      <input type="text" class="form-control" id="second-address" placeholder="Apartamento or piso">
+      <input type="text" class="form-control" name="secondAddress" [(ngModel)]="registerModel.secondAddress" id="second-address" placeholder="Apartamento or piso">
     </div>
 
     <!-- Localidad, provincias y Codigo postal -->
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="city">Localidad</label>
-        <input type="text" class="form-control" id="city">
+        <input type="text" class="form-control" name="city" [(ngModel)]="registerModel.city" id="city">
       </div>
       <div class="form-group col-md-4">
         <label for="state">Provincia</label>
-        <select id="state" class="form-control">
+        <select id="state" class="form-control" name="state" [(ngModel)]="registerModel.state">
           <!-- Listado de todas las provincias de Espanya -->
           <option selected>Elige provincia</option>
           <option value="Álava/Araba">Álava/Araba</option>
@@ -109,7 +112,7 @@
       </div>
       <div class="form-group col-md-2">
         <label for="inputZip">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
+        <input type="text" class="form-control" name="zip" [(ngModel)]="registerModel.zipCode" id="zip">
       </div>
     </div>
     <div class="form-group">
@@ -120,6 +123,6 @@
         </label>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Registrar</button>
+    <button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-primary">Registrar</button>
   </form>
 </div>
