@@ -11,25 +11,23 @@ import { Router } from '@angular/router';
     providers: [RegisterService]    // en los providers indicamos los servicios que usamos en este componente.
 })
 export class RegisterComponent implements OnInit {
-    // variable instancia de clase RegisterForm.
+    // variable instancia de clase RegisterForm que nos provee todas las variables necesárias.
     registerModel = new RegisterForm();
     public ok: boolean;
     public minCharPassw: boolean;
-    public booleanArr: Array<boolean> = [];
     public errorMsg: string;
     public isChecked: boolean;
 
     constructor(private registerService: RegisterService, private router: Router) {
         this.ok = true;
         this.minCharPassw = true;
-        this.booleanArr = [true, true, true, true, true];
         this.errorMsg = '';
-        // this.errorMsg = '';
     }
 
     ngOnInit(): void { }
 
     onSubmit(f: NgForm): void {
+        // condición para validar la password, debe tener como mínimo más de 6 caracteres.
         if(this.registerModel.passw.length < 6) {
             this.minCharPassw = false;
             this.errorMsg = 'La password debe contener almenos 6 caracteres.';
@@ -37,6 +35,7 @@ export class RegisterComponent implements OnInit {
             this.minCharPassw = true;
         }
 
+        // condición para validar que los dos campos tipo password sean iguales.
         if (this.registerModel.passw !== this.registerModel.validatePassw) {
             this.ok = false;
             this.errorMsg = 'La password debe coincidir.';
@@ -50,16 +49,6 @@ export class RegisterComponent implements OnInit {
             // rediccionará a la pantalla de registerComplete.
             this.router.navigate(["registerComplete"]);
         }
-
-        /*
-        if(this.registerModel.passw.length < 6) {
-            this.booleanArr[4] = false;
-            this.errorMsg[4] = 'La password debe contener almenos 6 caracteres.';
-        } else {
-            this.booleanArr[4] = true;
-        }
-        */
-
 
     }
 

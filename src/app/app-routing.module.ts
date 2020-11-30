@@ -15,6 +15,7 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
+    // ruta para la página que nos llevará si el registro se ha completado de manera correcta.
     path: 'registerComplete',
     component: RegisterCompleteComponent
   }

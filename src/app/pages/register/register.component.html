@@ -31,6 +31,7 @@
         <label for="validatePassw">Repeat Password</label>
         <input type="password" class="form-control" name="validatePassw" [(ngModel)]="registerModel.validatePassw" id="validate-passw" required>
       </div>
+      <!-- mostrará mensaje de error dependiendo de la condicion que sea falsa (ya sea por pocos caracteres o por no ser igual que el campo repetir password). -->
       <div class="form-group col-md-12 mt-n2" *ngIf="!this.ok || !this.minCharPassw">
         <small class="alert alert-danger">{{ this.errorMsg }}</small>
       </div>
@@ -124,6 +125,7 @@
         </label>
       </div>
     </div>
+    <!-- estará desactivado si el formulario no es válido o la checkbox sea false y por lo tanto desmarcada. -->
     <button type="submit" [disabled]="!registerForm.form.valid || !isChecked" class="btn btn-primary">Registrar</button>
   </form>
 </div>
