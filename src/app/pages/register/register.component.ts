@@ -14,12 +14,14 @@ export class RegisterComponent implements OnInit {
     // variable instancia de clase RegisterForm.
     registerModel = new RegisterForm();
     public ok: boolean;
+    public minCharPassw: boolean;
     public booleanArr: Array<boolean> = [];
     public errorMsg: string;
-
+    public isChecked: boolean;
 
     constructor(private registerService: RegisterService, private router: Router) {
         this.ok = true;
+        this.minCharPassw = true;
         this.booleanArr = [true, true, true, true, true];
         this.errorMsg = '';
         // this.errorMsg = '';
@@ -28,11 +30,21 @@ export class RegisterComponent implements OnInit {
     ngOnInit(): void { }
 
     onSubmit(f: NgForm): void {
+        if(this.registerModel.passw.length < 6) {
+            this.minCharPassw = false;
+            this.errorMsg = 'La password debe contener almenos 6 caracteres.';
+        } else {
+            this.minCharPassw = true;
+        }
+
         if (this.registerModel.passw !== this.registerModel.validatePassw) {
             this.ok = false;
             this.errorMsg = 'La password debe coincidir.';
         } else {
             this.ok = true;
+        }
+
+        if (this.minCharPassw && this.ok) {
             // si los datos son válidos los envía al service.
             this.registerService.sendRegister(this.registerModel);
             // rediccionará a la pantalla de registerComplete.
@@ -50,4 +62,5 @@ export class RegisterComponent implements OnInit {
 
 
     }
+
 }

@@ -10,4 +10,5 @@ export class RegisterForm {
     public city: string;
     public state: string;
     public zipCode: number;
+    public isChecked: boolean = false;
 }
