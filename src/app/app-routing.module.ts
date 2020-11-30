@@ -1,3 +1,4 @@
+import { RegisterCompleteComponent } from './pages/registerComplete/registerComplete.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
@@ -12,6 +13,10 @@ const routes: Routes = [
     // ruta predefinida que mostrara el contenido del componente register.
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'registerComplete',
+    component: RegisterCompleteComponent
   }
 ];
 
